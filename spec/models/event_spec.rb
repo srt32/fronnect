@@ -38,5 +38,11 @@ describe Event do
   #   day_of_week should be in 0, 5, 6
   #   all fields are required
   #   user_id should be in users table
+  # Other features
+  #   day_of_week method
+  #   start_hour
+  #   end_hour
+  #   belongs_to :user
+  #   user has_many :events
 
 end
