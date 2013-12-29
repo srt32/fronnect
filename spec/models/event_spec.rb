@@ -36,6 +36,14 @@ describe Event do
 
   # tests for validations
   #   day_of_week should be in 0, 5, 6
+  describe "with invalid attributes" do
+    it "rejects day_of_week other than 0,5,6" do
+      (1..4).each do |dow|
+        event = Event.create valid_attributes.merge(:day_of_week => dow)
+        event.should_not be_valid
+      end
+    end
+  end
   #   all fields are required
   #   user_id should be in users table
   # Other features
