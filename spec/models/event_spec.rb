@@ -35,7 +35,6 @@ describe Event do
   end
 
   # tests for validations
-  #   day_of_week should be in 0, 5, 6
   describe "with invalid attributes" do
     it "rejects day_of_week other than 0,5,6" do
       (1..4).each do |dow|
@@ -44,8 +43,7 @@ describe Event do
       end
     end
   end
-  #   all fields are required
-  #   user_id should be in users table
+
   # Other features
   #   day_of_week method
   #   start_hour
