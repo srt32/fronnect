@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @events = Event.all
@@ -16,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -55,6 +56,13 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:user_id, :title, :description, :venue, :address, :when)
+      params.require(:event).permit(:user_id,
+                                    :title,
+                                    :description,
+                                    :venue,
+                                    :address,
+                                    :day_of_week,
+                                    :start_hour,
+                                    :end_hour)
     end
 end

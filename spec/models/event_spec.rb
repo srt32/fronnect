@@ -7,9 +7,9 @@ describe Event do
                              :description => "new years",
                              :venue => "my house",
                              :address => "down the street 4",
-                             :day_of_week => 6,
-                             :start_hour => 18,
-                             :end_hour => 23 } }
+                             :day_of_week => '6',
+                             :start_hour => '18',
+                             :end_hour => '23' } }
 
   describe "creates valid event" do
     it "has given params" do
@@ -37,10 +37,15 @@ describe Event do
   # tests for validations
   describe "with invalid attributes" do
     it "rejects day_of_week other than 0,5,6" do
-      (1..4).each do |dow|
+      ('1'..'4').each do |dow|
         event = Event.create valid_attributes.merge(:day_of_week => dow)
         event.should_not be_valid
       end
+    end
+
+    it "rejects start / end hour other than 0..23" do
+      event = Event.create valid_attributes.merge(:start_hour => '25')
+      event.should_not be_valid
     end
   end
 
