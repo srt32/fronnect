@@ -3,10 +3,10 @@ require 'spec_helper'
 describe EventsController do
 
   before(:each) do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
     user = User.create(:email => "foo@bar.com",
                                                      :password => "foobar!!",
                                                      :password_confirmation => "foobar!!")
+    @request.env["devise.mapping"] = Devise.mappings[:user]
     sign_in user
   end
 

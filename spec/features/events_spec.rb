@@ -3,8 +3,8 @@ require 'spec_helper'
 describe "creating an event" do
   before :all do
     @user = User.create(:email => "foo@bar.com",
-                        :password => "foobar!",
-                        :password_confirmation => "foobar!")
+                        :password => "foobar!!",
+                        :password_confirmation => "foobar!!")
   end
 
   it 'does not allow guest to create event' do
@@ -14,6 +14,12 @@ describe "creating an event" do
 
   it 'allows logged in user to create an event' do
     # sign in the user
+    visit new_user_session_path
+    fill_in 'Email', with: 'foo@bar.com'
+    fill_in 'Password', with: 'foobar!!'
+    click_on 'Sign in'
+    expect(page).to have_content 'Signed in'
+
     visit new_event_path
     fill_in 'Title',       with: 'Big thing'
     fill_in 'Description', with: 'it is indeed'
