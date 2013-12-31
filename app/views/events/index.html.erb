@@ -1,13 +1,11 @@
-<h1>Listing events</h1>
+<h1>All Events</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Venue</th>
-      <th>Address</th>
+      <th>Host</th>
+      <th>What</th>
+      <th>Where</th>
       <th>When</th>
       <th></th>
       <th></th>
@@ -18,15 +16,13 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.user_id %></td>
+        <td><%= event.user.email %></td>
         <td><%= event.title %></td>
-        <td><%= event.description %></td>
         <td><%= event.venue %></td>
-        <td><%= event.address %></td>
         <td><%= event.when %></td>
-        <td><%= button_to 'Show', event %></td>
+        <td><%= button_to 'More Details', event_path(event), method: :get %></td>
         <td><%= button_to 'Edit', edit_event_path(event) %></td>
-        <td><%= button_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +30,4 @@
 
 <br>
 
-<%= button_to 'New Event', new_event_path, method: :get, class: "btn btn-primary" %>
+<%= button_to 'Create Event', new_event_path, method: :get, class: "btn btn-primary" %>
