@@ -14,20 +14,15 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.user.email %></td>
-        <td><%= event.title %></td>
-        <td><%= event.venue %></td>
-        <td><%= event.when %></td>
-        <td><%= button_to 'More Details', event_path(event), method: :get %></td>
-        <td><%= button_to 'Edit', edit_event_path(event) %></td>
-        <td><%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <%= render partial: "events/event", collection: @events %>
   </tbody>
 </table>
 
 <br>
 
 <%= button_to 'Create Event', new_event_path, method: :get, class: "btn btn-primary" %>
+
+<h2>Your Schedule</h2>
+<div class="your-schedule">
+  <%= render partial: "/events/user_events", collection: @user_events, as: :event %>
+</div>

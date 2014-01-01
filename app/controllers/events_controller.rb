@@ -4,6 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
+    @user_events = current_user.rsvps
   end
 
   def show

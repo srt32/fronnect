@@ -7,6 +7,7 @@ class Event < ActiveRecord::Base
   before_create :set_when
 
   belongs_to :user
+  has_many :attendees
 
   validates :day_of_week, presence: true, inclusion: { in: %w(0 5 6),
     message: "Please choose Friday, Saturday, or Sunday" }

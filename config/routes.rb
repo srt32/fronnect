@@ -1,5 +1,8 @@
 Fronnect::Application.routes.draw do
-  resources :events
+
+  resources :events do
+    resources :attendees # :TODO: clear out these routes
+  end
 
   devise_for :users
 
