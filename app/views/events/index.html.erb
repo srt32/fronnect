@@ -32,3 +32,8 @@
 <br>
 
 <%= button_to 'Create Event', new_event_path, method: :get, class: "btn btn-primary" %>
+
+<h2>Your Schedule</h2>
+<div class="your-schedule">
+  <%= render partial: "/events/user_events", collection: @user_events, as: :event %>
+</div>
