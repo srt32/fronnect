@@ -5,6 +5,7 @@ Fronnect::Application.routes.draw do
   end
 
   devise_for :users
+  resources :users, only: [:show]
 
   root 'events#index'
   # The priority is based upon order of creation: first created -> highest priority.
