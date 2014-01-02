@@ -7,14 +7,13 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand">Fronnect</a>
+    <a class="navbar-brand"> <%= image_tag 'fronnect_logo.png', size: "70x30" %></a>
   </div>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav">
       <li><%= link_to "All Events", events_path %></li>
-      <li><%= link_to "Your Events" %></li>
       <li><%= link_to "Create Event", new_event_path %></li>
     </ul>
     
