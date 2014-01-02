@@ -19,6 +19,14 @@ class Event < ActiveRecord::Base
   validates :start_hour, presence: true, inclusion: { in: ('0'..'23') }
   validates :end_hour, presence: true, inclusion: { in: ('0'..'23') }
 
+  def start
+    self.when.begin
+  end
+
+  def end
+    self.when.end
+  end
+
   private
 
   def set_when
