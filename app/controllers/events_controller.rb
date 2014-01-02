@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all.decorate
-    @user_events = current_user.rsvps
+    @user_events = current_user.rsvps.decorate
   end
 
   def show

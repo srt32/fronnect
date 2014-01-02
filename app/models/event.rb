@@ -42,7 +42,8 @@ class Event < ActiveRecord::Base
   end
 
   def set_date
-    DateTime.now.next_day(day_of_week.to_i)
+    #DateTime.now.next_day(day_of_week.to_i)
+    Date.today.advance(:days => day_of_week.to_i - Date.today.wday)
   end
 
   def date_builder(date_obj, hour)
