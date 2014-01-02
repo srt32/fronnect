@@ -47,6 +47,12 @@ describe Event do
       event = Event.create valid_attributes.merge(:start_hour => '25')
       event.should_not be_valid
     end
+
+    it "rejects end_hour before start_hour" do
+      event = Event.create valid_attributes.merge(:start_hour => '20',
+                                                  :end_hour => '18')
+    end
+
   end
 
   # Other features

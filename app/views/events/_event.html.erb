@@ -2,7 +2,7 @@
   <td><%= event.user.email %></td>
   <td><%= event.title %></td>
   <td><%= event.venue %></td>
-  <td><%= start_time(event.start) %></td>
+  <td><%= event.start_time %></td>
   <td><%= button_to "I'm in", event_attendees_path(event), method: :post %></td>
   <td><%= button_to 'More Details', event_path(event), method: :get %></td>
   <td><%= button_to 'Edit', edit_event_path(event) %></td>
