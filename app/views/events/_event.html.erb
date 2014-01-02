@@ -3,9 +3,7 @@
   <td><%= event.title %></td>
   <td><%= event.venue %></td>
   <td><%= event.start_time %></td>
-  <td><%= button_to "I'm in", event_attendees_path(event), method: :post %></td>
-  <td><%= button_to 'More Details', event_path(event), method: :get %></td>
-  <td><%= button_to 'Edit', edit_event_path(event), method: :get %></td>
-  <td><%= button_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <td><%= button_to 'More Details', event_path(event), method: :get, class: "btn btn-info btn-sm" %></td>
+  <td><%= button_to "I'm in!", event_attendees_path(event), method: :post, class: "btn btn-primary btn-sm" %></td>
 </tr>
 

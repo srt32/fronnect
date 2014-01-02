@@ -1,6 +1,6 @@
-<h1>All Events</h1>
+<h2>What your friends want to do this weekend</h2>
 
-<table>
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Host</th>
@@ -22,7 +22,22 @@
 
 <%= button_to 'Create Event', new_event_path, method: :get, class: "btn btn-primary" %>
 
-<h2>Your Schedule</h2>
-<div class="your-schedule">
-  <%= render partial: "/events/user_events", collection: @user_events, as: :event %>
-</div>
+<h2>Your weekend plans</h2>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Host</th>
+      <th>What</th>
+      <th>Where</th>
+      <th>When</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render partial: "/events/user_events", collection: @user_events, as: :event %>
+  </tbody>
+</table>

@@ -1,1 +1,8 @@
-<li><%= event.title %></li>
+<tr>
+  <td><%= event.user.email %></td>
+  <td><%= event.title %></td>
+  <td><%= event.venue %></td>
+  <td><%= event.when %></td>
+  <td><%= button_to 'More Details', event_path(event), method: :get, class: "btn btn-info btn-sm" %></td>
+  
+</tr>
