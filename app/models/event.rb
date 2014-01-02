@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
                 :end_hour
 
   before_create :set_when
+  before_validation :convert_hours
 
   belongs_to :user
   has_many :attendees
@@ -16,10 +17,24 @@ class Event < ActiveRecord::Base
   validates :description, presence: true, length: { minimum: 5, maximum:1000 }
   validates :venue, presence: true, length: { minimum: 5, maximum:255 }
   validates :address, presence: true, length: { minimum: 5, maximum:255 }
-  validates :start_hour, presence: true, inclusion: { in: ('0'..'23') }
-  validates :end_hour, presence: true, inclusion: { in: ('0'..'23') }
+  validates :start_hour, presence: true, inclusion: { in: (0..23) }
+  validates :end_hour, presence: true, inclusion: { in: (0..23) },
+                       numericality: { :greater_than => ->(event) { event.start_hour } }
+
+  def start
+    self.when.begin
+  end
+
+  def end
+    self.when.end
+  end
 
   private
+
+  def convert_hours
+    self.start_hour = start_hour.to_i
+    self.end_hour = end_hour.to_i
+  end
 
   def set_when
     date = set_date
