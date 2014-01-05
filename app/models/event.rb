@@ -2,7 +2,8 @@ class Event < ActiveRecord::Base
 
   attr_accessor :day_of_week,
                 :start_hour,
-                :end_hour
+                :end_hour,
+                :start_date
 
   before_create :set_when
   before_validation :convert_hours
