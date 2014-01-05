@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "creating an event" do
+describe "creating an event", :js => true do
   before :all do
     @user = User.create(:email => "foo@bar.com",
                         :password => "foobar!!",
@@ -25,7 +25,8 @@ describe "creating an event" do
     fill_in 'Description', with: 'it is indeed'
     fill_in 'Venue',       with: 'my house'
     fill_in 'Address',     with: 'down the street'
-    choose('event_day_of_week_5')
+    find(".event_start_date").click
+    click_link('1')
     select('2', from: 'Start hour')
     select('4', from: 'End hour')
 

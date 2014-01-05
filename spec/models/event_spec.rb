@@ -7,7 +7,7 @@ describe Event do
                              :description => "new years",
                              :venue => "my house",
                              :address => "down the street 4",
-                             :day_of_week => '6',
+                             :start_date => '2014-01-09',
                              :start_hour => '18',
                              :end_hour => '23' } }
 
@@ -19,7 +19,8 @@ describe Event do
       event.description.should eq("new years")
       event.venue.should eq("my house")
       event.address.should eq("down the street 4")
-      date = DateTime.now.next_day(6)
+      #date = DateTime.now.next_day(6)
+      date = Date.strptime(valid_attributes[:start_date], "%Y-%m-%d")
       event.when.should eq(DateTime.new(date.year,
                                         date.month,
                                         date.day,
@@ -36,12 +37,6 @@ describe Event do
 
   # tests for validations
   describe "with invalid attributes" do
-    it "rejects day_of_week other than 0,5,6" do
-      ('1'..'4').each do |dow|
-        event = Event.create valid_attributes.merge(:day_of_week => dow)
-        event.should_not be_valid
-      end
-    end
 
     it "rejects start / end hour other than 0..23" do
       event = Event.create valid_attributes.merge(:start_hour => '25')

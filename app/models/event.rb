@@ -1,9 +1,8 @@
 class Event < ActiveRecord::Base
 
-  attr_accessor :day_of_week,
+  attr_accessor :start_date,
                 :start_hour,
-                :end_hour,
-                :start_date
+                :end_hour
 
   before_create :set_when
   before_validation :convert_hours
@@ -11,8 +10,6 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :attendees
 
-  validates :day_of_week, presence: true, inclusion: { in: %w(0 5 6),
-    message: "Please choose Friday, Saturday, or Sunday" }
   validates :user_id, presence: true
   validates :title, presence: true, length: { minimum: 3, maximum:255 }
   validates :description, presence: true, length: { minimum: 3, maximum:1000 }
@@ -43,8 +40,7 @@ class Event < ActiveRecord::Base
   end
 
   def set_date
-    #DateTime.now.next_day(day_of_week.to_i)
-    Date.today.advance(:days => day_of_week.to_i - Date.today.wday)
+    Date.strptime(start_date, "%Y-%m-%d")
   end
 
   def date_builder(date_obj, hour)
