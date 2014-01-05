@@ -12,8 +12,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'draper'
+gem 'jquery-ui-rails'
+gem 'jquery-turbolinks'
+gem 'selenium-webdriver'
 
 gem 'rails_12factor', group: :production
+
 
 group :doc do
   gem 'sdoc', require: false
