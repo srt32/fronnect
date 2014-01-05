@@ -29,7 +29,9 @@ describe "creating an event" do
     select('2', from: 'Start hour')
     select('4', from: 'End hour')
 
-    click_on 'Create Event'
+    within('.actions') do
+      click_on 'Create Event'
+    end
     expect(page).to have_content 'Big thing'
   end
 end
