@@ -26,6 +26,11 @@ class Event < ActiveRecord::Base
     self.when.end
   end
 
+  def self.future_events
+    #all.select { |event| event.start >= Time.now } #refactor
+    all.where("'when' > ?", Time.now)
+  end
+
   private
 
   def convert_hours

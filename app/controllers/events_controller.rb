@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = Event.all.order(:when).decorate
+    @events = Event.order(:when).future_events.decorate
     @user_events = current_user.rsvps.decorate
     @event = Event.new
   end

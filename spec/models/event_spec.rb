@@ -50,6 +50,16 @@ describe Event do
 
   end
 
+  describe "filter events" do
+    it "hides historical events" do
+      event1 = Event.create valid_attributes.merge(:start_date => '2014-01-02')
+      binding.pry
+      Event.future_events.should be_empty
+      event2 = Event.create valid_attributes.merge(:start_date => '2014-04-30') #make this less brittle
+      Event.future_events.should_not be_empty
+    end
+  end
+
   # Other features
   #   day_of_week method
   #   start_hour
