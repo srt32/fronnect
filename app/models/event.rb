@@ -12,7 +12,6 @@ class Event < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :title, presence: true, length: { minimum: 3, maximum:255 }
-  validates :description, presence: true, length: { minimum: 3, maximum:1000 }
   validates :venue, presence: true, length: { minimum: 3, maximum:255 }
   validates :address, presence: true, length: { minimum: 3, maximum:255 }
   validates :start_hour, presence: true, inclusion: { in: (0..23) }
