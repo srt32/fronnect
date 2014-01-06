@@ -3,8 +3,9 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = Event.all.decorate
+    @events = Event.all.order(:when).decorate
     @user_events = current_user.rsvps.decorate
+    @event = Event.new
   end
 
   def show
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Event was successfully created.' }
         format.json { render action: 'show', status: :created, location: @event }
       else
         format.html { render action: 'new' }
