@@ -7,7 +7,7 @@ describe Event do
                              :description => "new years",
                              :venue => "my house",
                              :address => "down the street 4",
-                             :start_date => '2014-01-09',
+                             :start_date => '2014-01-20',
                              :start_hour => '18',
                              :end_hour => '23' } }
 
@@ -48,6 +48,15 @@ describe Event do
                                                   :end_hour => '18')
     end
 
+  end
+
+  describe "filter events" do
+    it "hides historical events" do
+      event1 = Event.create valid_attributes.merge(:start_date => 5.days.ago.strftime('%Y-%m-%d'))
+      Event.future_events.should be_empty
+      event2 = Event.create valid_attributes.merge(:start_date => 2.months.from_now.strftime('%Y-%m-%d'))
+      Event.future_events.should_not be_empty
+    end
   end
 
   # Other features

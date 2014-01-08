@@ -4,6 +4,10 @@
   <td><%= event.venue %></td>
   <td><%= event.start_time %></td>
   <td><%= button_to 'More Details', event_path(event), method: :get, class: "btn btn-info btn-sm" %></td>
+  <% if current_user.attendee?(event) %>
+    <td></td>
+  <% else %>
   <td><%= button_to "I'm in!", event_attendees_path(event), method: :post, class: "btn btn-primary btn-sm" %></td>
+  <% end %>
 </tr>
 
