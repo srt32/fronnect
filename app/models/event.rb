@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.future_events
-    Event.where("lower(events.when) >= NOW()")
+    Event.where("lower(events.when) >= ?", Time.now)
   end
 
   private
