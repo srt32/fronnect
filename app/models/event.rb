@@ -27,8 +27,7 @@ class Event < ActiveRecord::Base
   end
 
   def self.future_events
-    #all.select { |event| event.start >= Time.now } #refactor
-    all.where("'when' > ?", Time.now)
+    Event.where("lower(events.when) >= NOW()")
   end
 
   private

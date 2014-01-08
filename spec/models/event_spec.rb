@@ -52,7 +52,7 @@ describe Event do
 
   describe "filter events" do
     it "hides historical events" do
-      event1 = Event.create valid_attributes.merge(:start_date => 1.days.ago.strftime('%Y-%m-%d'))
+      event1 = Event.create valid_attributes.merge(:start_date => 5.days.ago.strftime('%Y-%m-%d'))
       Event.future_events.should be_empty
       event2 = Event.create valid_attributes.merge(:start_date => 2.months.from_now.strftime('%Y-%m-%d'))
       Event.future_events.should_not be_empty

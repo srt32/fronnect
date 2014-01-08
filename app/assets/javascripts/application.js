@@ -15,5 +15,4 @@
 //= require jquery.ui.all
 //= require turbolinks
 //= require jquery.turbolinks
-//= jquery.ui.datepicker
 //= require_tree .

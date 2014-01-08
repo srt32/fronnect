@@ -6,7 +6,7 @@ describe User do
                              :description => "new years",
                              :venue => "my house",
                              :address => "down the street 4",
-                             :day_of_week => '6',
+                             :start_date => '2014-01-20',
                              :start_hour => '18',
                              :end_hour => '23' } }
 

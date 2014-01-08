@@ -7,9 +7,7 @@ class User < ActiveRecord::Base
   has_many :events
 
   def rsvps
-    #attendees = Attendee.where(:user_id => id)
-    #Event.where(:id => attendees.map(&:event_id))
-    Event.where(:id => Attendee.where(:user_id => id).map(&:event_id))
+    Event.future_events.where(:id => Attendee.where(:user_id => id).map(&:event_id))
   end
 
   def attendee?(event)
