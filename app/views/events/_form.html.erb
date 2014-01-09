@@ -27,29 +27,13 @@
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
-  <% if false %>
   <div class="field">
-    <%= f.radio_button(:day_of_week, 5) %>
-    <%= f.label(:day_of_week_friday, "Friday") %>
-    <%= f.radio_button(:day_of_week, 6) %>
-    <%= f.label(:day_of_week_saturday, "Saturday") %>
-    <%= f.radio_button(:day_of_week, 0) %>
-    <%= f.label(:day_of_week_sunday, "Sunday") %>
-  </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :start_date %><br />
-    <%= f.text_field :start_date, class: "event_start_date" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :start_hour %>
-    <%= f.select :start_hour, (0..23) %>
+    <%= f.label :start_date %>
+    <%= f.datetime_select :start_date, ampm: true, minute_step: 15 %>
   </div>
   <div class="field">
-    <%= f.label :end_hour %>
-    <%= f.select :end_hour, (0..23) %>
+    <%= f.label :end_date %>
+    <%= f.datetime_select :end_date, ampm: true, minute_step: 15 %>
   </div>
   <div class="actions">
     <%= f.submit %>
