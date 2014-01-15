@@ -64,7 +64,6 @@ class EventsController < ApplicationController
                                     :description,
                                     :venue,
                                     :address,
-                                    :start_date,
-                                    :end_date)
+                                    :start_date)
     end
 end
