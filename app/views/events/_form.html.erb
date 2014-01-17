@@ -28,9 +28,9 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :start_date %>
-    <%= f.date_select :start_date %>
-    <%= f.time_select :start_date, ampm: true, minute_step: 15, :ignore_date => true %>
+    <%= f.label :starts_at %>
+    <%= f.text_field :starts_at, class: "date_calendar" %>
+    <%= f.time_select :starts_at, ampm: true, minute_step: 15, :ignore_date => true %>
   </div>
   <div class="actions">
     <%= f.submit %>

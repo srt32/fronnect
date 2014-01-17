@@ -13,6 +13,6 @@ class EventDecorator < Draper::Decorator
   #   end
 
   def start_time
-    object.start_date.strftime('%a, %b %d at %I:%M%p')
+    object.starts_at.strftime('%a, %b %d at %I:%M%p')
   end
 end

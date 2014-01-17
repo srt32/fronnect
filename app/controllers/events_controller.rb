@@ -3,7 +3,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = Event.order(:start_date).future_events.decorate
+    @events = Event.order(:starts_at).future_events.decorate
     @user_events = current_user.rsvps.decorate
     @event = Event.new
   end
@@ -20,7 +20,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = current_user.events.new(event_params)
+    options = event_params
+    options[:starts_at] = EventDate.new(options).to_timestamp
+    @event = current_user.events.new(options)
 
     respond_to do |format|
       if @event.save
@@ -64,6 +66,6 @@ class EventsController < ApplicationController
                                     :description,
                                     :venue,
                                     :address,
-                                    :start_date)
+                                    :starts_at)
     end
 end
