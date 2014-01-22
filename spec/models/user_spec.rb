@@ -1,18 +1,15 @@
 require 'spec_helper'
 
 describe User do
-  let(:valid_attributes) { { :user_id => 1,
-                             :title => "party!",
-                             :description => "new years",
-                             :venue => "my house",
-                             :address => "down the street 4",
-                             :start_date => '2014-01-20',
-                             :start_hour => '18',
-                             :end_hour => '23' } }
+  let(:valid_attributes) {{ :user_id => 1,
+                            :title => "party!",
+                            :description => "new years",
+                            :venue => "my house",
+                            :address => "down the street 4",
+                            :starts_at => "2014-01-26 12:00:00" }}
 
   it "lists events with an rsvp" do
     event1 = Event.create! valid_attributes
-    event2 = Event.create! valid_attributes
     user = User.create(:email => "foo@bar.com",
                                                      :password => "foobar!!",
                                                      :password_confirmation => "foobar!!")

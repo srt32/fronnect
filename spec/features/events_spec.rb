@@ -25,11 +25,8 @@ describe "creating an event", :js => true do
     fill_in 'Description', with: 'it is indeed'
     fill_in 'Venue',       with: 'my house'
     fill_in 'Address',     with: 'down the street'
-    find(".event_start_date").click
-    click_link('15')
-    select('2', from: 'Start hour')
-    select('4', from: 'End hour')
-
+    find(".date_calendar").click
+    click_link('28')
     within('.actions') do
       click_on 'Create Event'
     end

@@ -29,6 +29,8 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'database_cleaner'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 ruby '2.0.0'

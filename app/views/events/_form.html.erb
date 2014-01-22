@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, "Title*" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -20,36 +20,17 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :venue %><br>
+    <%= f.label :venue, "Venue*" %><br>
     <%= f.text_field :venue %>
   </div>
   <div class="field">
     <%= f.label :address %><br>
     <%= f.text_field :address %>
   </div>
-  <% if false %>
   <div class="field">
-    <%= f.radio_button(:day_of_week, 5) %>
-    <%= f.label(:day_of_week_friday, "Friday") %>
-    <%= f.radio_button(:day_of_week, 6) %>
-    <%= f.label(:day_of_week_saturday, "Saturday") %>
-    <%= f.radio_button(:day_of_week, 0) %>
-    <%= f.label(:day_of_week_sunday, "Sunday") %>
-  </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :start_date %><br />
-    <%= f.text_field :start_date, class: "event_start_date" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :start_hour %>
-    <%= f.select :start_hour, (0..23) %>
-  </div>
-  <div class="field">
-    <%= f.label :end_hour %>
-    <%= f.select :end_hour, (0..23) %>
+    <%= f.label :starts_at, "Starts*" %>
+    <%= f.text_field :starts_at, class: "date_calendar" %>
+    <%= f.time_select :starts_at, ampm: true, minute_step: 15, :ignore_date => true %>
   </div>
   <div class="actions">
     <%= f.submit %>
