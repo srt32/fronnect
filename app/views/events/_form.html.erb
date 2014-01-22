@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, "Title*" %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -20,7 +20,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :venue %><br>
+    <%= f.label :venue, "Venue*" %><br>
     <%= f.text_field :venue %>
   </div>
   <div class="field">
@@ -28,7 +28,7 @@
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :starts_at %>
+    <%= f.label :starts_at, "Starts*" %>
     <%= f.text_field :starts_at, class: "date_calendar" %>
     <%= f.time_select :starts_at, ampm: true, minute_step: 15, :ignore_date => true %>
   </div>
